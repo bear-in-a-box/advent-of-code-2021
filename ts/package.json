@@ -1,0 +1,18 @@
+{
+  "name": "advent-of-code-2021",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Все в порядке 😎\" && exit 0"
+  },
+  "keywords": [
+    "advent-of-code"
+  ],
+  "author": "Wojciech Tałałaj <wojtal.pl@gmail.com> (https://github.com/bear-in-a-box)",
+  "license": "WTFPL",
+  "devDependencies": {
+    "@types/node": "^16.11.12",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.3"
+  }
+}
