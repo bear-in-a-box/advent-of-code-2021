@@ -29,6 +29,7 @@ const tileShifts = [
 
 (async () => {
   const input = (await fs.readFile('../inputs/15.txt')).toString();
+  const start = performance.now();
   const lines = input.split('\n');
   const tile = lines.map((line) => line.split('').map((v) => +v));
   const n = tile.length * 5;
@@ -88,5 +89,7 @@ const tileShifts = [
     node.visited = false;
   }
   go(startNode);
-  console.log(endNode.distance);
+  const end = performance.now();
+  console.log('Result:', endNode.distance);
+  console.log('Time elapsed:', end - start, 'ms');
 })();
