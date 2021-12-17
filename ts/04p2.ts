@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import { performance } from 'perf_hooks';
 
 class Board {
   private checks: boolean[][];
@@ -76,6 +77,9 @@ function game(
   const winners = new Set<Board>();
   for (const draw of draws) {
     for (const board of boards) {
+      if (winners.has(board)) {
+        continue;
+      }
       board.draw(draw);
       if (board.isWinner) {
         winners.add(board);
@@ -92,8 +96,12 @@ function game(
   const lines = input.split('\n');
   const draws = lines[0].split(',').map((v) => +v);
   const boards = parseBoards(lines.slice(2));
+  const start = performance.now();
   const [winningBoard, winningDraw] = game(boards, draws, boards.length) || [];
   if (winningBoard && winningDraw !== undefined) {
-    console.log(winningBoard.calculateScore(winningDraw));
+    const score = winningBoard.calculateScore(winningDraw);
+    const end = performance.now();
+    console.log('Result:', score);
+    console.log('Time elapsed:', end - start, 'ms');
   }
 })();
